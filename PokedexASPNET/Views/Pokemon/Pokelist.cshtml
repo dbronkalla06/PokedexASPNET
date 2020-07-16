@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PokedexASPNET.Models.Pokemon>
+
+@{
+    ViewData["Title"] = "Pokelist";
+}
+
+<h1>Pokelist</h1>
+
+<p>
+    <a asp-action="Upsert">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondaryType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Caught)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EvolvesTo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondaryType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Caught)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EvolvesTo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
